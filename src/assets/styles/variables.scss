@@ -1,0 +1,32 @@
+:root {
+  --color-accent: #ff0f82;
+  --color-background: #0a0a0a;
+  --color-text: #fff;
+  --color-text-muted: #d3d3d3;
+
+  --color-grey: #121212;
+  --color-grey-a: #1a1a1a;
+  --color-grey-b: #171717;
+  --color-grey-c: #151515;
+  --color-grey-d: #0f0f0f;
+  --color-grey-i: #0d0d0d;
+  --color-grey-f: #0a0a0a;
+
+  --color-black: #353535;
+  --color-beige: #fbf1f1;
+  --color-dark-beige: #dec0c0;
+
+  --shadow-small-default: 0px 1px 4px 1px rgba(36, 36, 36, 0.07);
+  --shadow-small-hovered: 0px 1px 16px 2px rgba(36, 36, 36, 0.07);
+  --shadow-small-pressed: 0px 0px 6px rgba(36, 36, 36, 0.07);
+  --shadow-small-hidden: 0px 1px 4px 1px rgba(36, 36, 36, 0);
+
+  --shadow-medium-default: 0px 1px 12px 2px rgba(36, 36, 36, 0.07);
+  --shadow-medium-hovered: 0px 2px 32px 6px rgba(36, 36, 36, 0.07);
+  --shadow-medium-pressed: 0px 1px 8px rgba(36, 36, 36, 0.07);
+  --shadow-medium-hidden: 0px 1px 12px 2px rgba(36, 36, 36, 0);
+  --shadow-medium-dark: 0px 1px 12px 2px rgba(36, 36, 36, 0.7);
+
+  --shadow-huge-default: 0px 2px 160px 16px rgba(36, 36, 36, 0.07);
+  --shadow-huge-hidden: 0px 2px 160px 16px rgba(36, 36, 36, 0);
+}
