@@ -1,0 +1,16 @@
+.select {
+  width: 270px;
+  .el-input__wrapper {
+    background-color: inherit;
+  }
+  .el-input__inner {
+    color: var(--color-text);
+
+    &,
+    &::placeholder {
+      font-family: 'Raleway', 'Arial', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+  }
+}

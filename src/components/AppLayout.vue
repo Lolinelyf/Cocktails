@@ -9,9 +9,10 @@ const props = defineProps({
 
 <template>
   <div :class="$style.root">
-    <div :style="`background-img: url(${imgUrl});`" :class="$style.img"></div>
+    <div :style="`background-image: url(${imgUrl});`" :class="$style.img"></div>
     <div :class="$style.main">
       <el-button :class="$style.button">Get random cocktail</el-button>
+      <slot></slot>
     </div>
   </div>
 </template>
@@ -24,15 +25,16 @@ const props = defineProps({
 }
 
 .img {
-  width: 50%;
+  width: 45%;
+  height: 100vh;
   background-repeat: no-repeat;
-  background-position: 50% 50%;
+  background-position: center;
   background-size: cover;
 }
 
 .main {
   position: relative;
-  width: 500%;
+  width: 55%;
   padding: 2rem 2.2rem;
 }
 
