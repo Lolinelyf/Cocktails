@@ -1,12 +1,11 @@
 <script setup>
 import axios from 'axios';
 import { computed, ref } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
+import { useRoute } from 'vue-router';
 import { COCKTAIL_BY_ID } from '@/constants';
 import AppLayout from '../components/AppLayout.vue';
 
 const route = useRoute();
-const router = useRouter();
 const cocktailId = computed(() => route.path.split('/').pop());
 const ingredients = computed(() => {
   const ingredients = [];
@@ -32,14 +31,10 @@ async function getCocktail() {
 }
 
 getCocktail();
-
-function goBack() {
-  router.go(-1);
-}
 </script>
 
 <template v-if="cocktail">
-  <AppLayout :imgUrl="cocktail.strDrinkThumb" :backFunk="goBack">
+  <AppLayout :imgUrl="cocktail.strDrinkThumb">
     <div class="wrapper">
       <div v-if="!ingredient || !cocktails" class="info">
         <h1 class="title">{{ cocktail.strDrink }}</h1>

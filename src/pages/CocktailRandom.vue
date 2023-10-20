@@ -1,24 +1,17 @@
 <script setup>
 import axios from 'axios';
 import { computed, ref } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
-import { COCKTAIL_RANDOM } from '@/constants';
+import { COCKTAIL_RANDOM, INGREDIENT_PIC } from '@/constants';
 import AppLayout from '../components/AppLayout.vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/css';
 
-const route = useRoute();
-const router = useRouter();
-const cocktailId = computed(() => route.path.split('/').pop());
 const ingredients = computed(() => {
   const ingredients = [];
 
   for (let i = 1; i <= 15; i++) {
     if (!cocktail.value[`strIngredient${i}`]) break;
-    const ingredient = {};
-
-    ingredient.name = cocktail.value[`strIngredient${i}`];
-    ingredient.measure = cocktail.value[`strMeasure${i}`];
+    const ingredient = cocktail.value[`strIngredient${i}`];
 
     ingredients.push(ingredient);
   }
@@ -34,14 +27,10 @@ async function getCocktail() {
 }
 
 getCocktail();
-
-function goBack() {
-  router.go(-1);
-}
 </script>
 
 <template v-if="cocktail">
-  <AppLayout :imgUrl="cocktail.strDrinkThumb" :backFunk="goBack">
+  <AppLayout :imgUrl="cocktail.strDrinkThumb">
     <div class="wrapper">
       <div v-if="!ingredient || !cocktails" class="info">
         <h1 class="title">{{ cocktail.strDrink }}</h1>
@@ -49,13 +38,21 @@ function goBack() {
         <div :class="$style.slider">
           <swiper
             :class="$style.swiper"
-            :slides-per-view="1"
+            :slides-per-view="3"
             :space-between="50"
           >
-            <swiper-slide>Slide 1</swiper-slide>
-            <swiper-slide>Slide 2</swiper-slide>
-            <swiper-slide>Slide 3</swiper-slide>
-            ...
+            <swiper-slide
+              v-for="(ingredient, key) in ingredients"
+              :key="key"
+              :class="$style.slide"
+            >
+              <img
+                :src="`${INGREDIENT_PIC}${ingredient}-Small.png`"
+                :alt="ingredient"
+                :class="$style.img"
+              />
+              <p :class="$style.name">{{ ingredient }}</p></swiper-slide
+            >
           </swiper>
         </div>
         <p :class="$style.instruction">{{ cocktail.strInstructions }}</p>
@@ -97,5 +94,28 @@ function goBack() {
 
 .swiper {
   width: 650px;
+}
+
+.slide {
+  display: flex;
+  flex-flow: column wrap;
+  width: 100px;
+  align-items: center;
+}
+
+.img {
+  height: 79px;
+  width: 100%;
+  margin-bottom: 1rem;
+  object-fit: contain;
+}
+
+.name {
+  width: 100%;
+  font-family: 'Raleway', 'Arial', sans-serif;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-align: center;
+  font-size: 1rem;
 }
 </style>
